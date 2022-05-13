@@ -1,0 +1,122 @@
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  ul > li {
+    margin: 5px;
+    text-indent: 0;
+  }
+  
+  #to-do {
+    width: 800px;
+    margin: 0 auto;
+  }
+  
+  ul > li > .complete {
+    text-decoration: line-through;
+    color: #EAA8BF;
+  }
+
+  h1 {
+    background-color: #f5d5da; /* 背景色 */
+    border-radius: 5px;
+    color: #ef858c; /* 文字色 */
+    padding: 10px 10px 10px 60px; /* 上・右・下・左の余白 */
+    position: relative;
+    text-shadow: 0px 0px 10px #fff, 0px 0px 6px #fff, 0px 0px 4px #fff, 0 0 0.5px #fff; /* 文字の影 */
+  }
+  h1:before {
+    content: '＊*'; /*花に見せかけるためのアスタリスク*/
+    color: #fff; /* アスタリスクの色 */
+    display: inline-block;
+    font-size: 30px; /* アスタリスクの大きさ */
+    font-weight: bold;
+    margin-right: 10px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    text-shadow: 0px 0px 3px #fff, 0px 0px 2px #fff, 0 0 0.5px #fff; /* アスタリスク周りの影 */
+  }
+  h1:after {
+    border-bottom: 2px dotted #fff; /* 下線 */
+    content: '';
+    position: absolute;
+    bottom: 3px;
+    left: 3px;
+    right: 3px;
+  }
+
+  p {
+    color: #d04255; /* 文字色 */
+    padding: 10px 10px 10px 60px; /* 上・右・下・左の余白 */
+    position: relative;
+  }
+  p:before {
+    content: '＊*'; /*花に見せかけるためのアスタリスク*/
+    color: #fff; /* アスタリスクの色 */
+    display: inline-block;
+    font-size: 30px; /* アスタリスクの大きさ */
+    font-weight: bold;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    text-shadow: 0px 0px 6px #EAA8BF, 0px 0px 4px #EAA8BF, 0 0 0.5px #EAA8BF; /* アスタリスク周りの影 */
+  }
+  p:after {
+    border-bottom: 2px dotted #EAA8BF; /* 下線 */
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+  }
+
+  body{
+    color: #d04255;
+  }
+
+  button{
+    font-size: 18px;
+    display: inline-block;
+    padding: 0.3em 0.5em 0.2em;
+    color: #ffffff;
+    border-radius: 25px;
+    background-color: #f3cbd0;
+    border: none;
+    cursor: pointer;
+    margin-right: 20px;
+  }
+
+  .mybox{
+    background: none;
+    border: 1px solid #f3cbd0;	/* 線の太さ・種類・色 */
+    margin: 5px 10px;	/* 外側の余白 上下・左右 */
+    padding: 20px 20px 40px 20px;	/* 内側の余白 上・右・下・左 */
+    position: relative;
+  }
+  .mybox:after{
+    background-color: #fff;	/* チェック部分背景色 */
+    background-image: linear-gradient(90deg, rgba(245,213,218,.5) 50%, transparent 50%), linear-gradient(rgba(245,213,218,.5) 50%, transparent 50%);	/* チェック色 */
+    background-size: 20px 20px;	/* チェックのサイズ */
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 25px;	/* チェック部分の高さ */
+    z-index: -2;
+  }
+
+  #clock-02{
+    font-size: 30px;
+  }
