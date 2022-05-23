@@ -23,8 +23,9 @@
     <ul>
       <li v-for="todo in todos">
         <input type="checkbox" v-model="todo.isCompleted" style="accent-color: #EF858C">
-        <span :class="{ 'complete': todo.isCompleted }">{{ todo.task }}{{ todo.date }}</span>
-        <button @click="deleteTodo(todo)">Delete</button>
+          <span :class="{ 'complete': todo.isCompleted }">{{ todo.id }}:{{ todo.task }}{{ todo.date }}</span>
+        <button @click="editTask(todo.id)">edit</button>
+        <button @click="deleteTodo(todo.id)">Delete</button>
       </li>
     </ul>
   </div>
@@ -35,11 +36,5 @@
   <script src="./main.js"></script>
 
 </body>
-
-<iframe id="inline-frame"
-  width="表示する幅(px)"
-  height="表示する高さ(px)"
-  src="埋め込むページのURL">
-</iframe>
 
 </html>

@@ -3,10 +3,11 @@ new Vue({
   data: {
     newTask: '',
     newDate: '',
+    uniqueKey: 0,
     todos: [
-      { task: 'Rubyの勉強をする', isCompleted: false, date: '2022-11-05' },
-      { task: 'Vue.jsのアプリを作る', isCompleted: false, date: '2022-04-10' },
-      { task: 'Youtubeをみる', isCompleted: false, date: '2022-09-14' }
+      { task: 'Rubyの勉強をする', isCompleted: false, date: '2022-11-05' ,id:'1'},
+      { task: 'Vue.jsのアプリを作る', isCompleted: false, date: '2022-04-10',id:'2'},
+      { task: 'Youtubeをみる', isCompleted: false, date: '2022-09-14' ,id:'3'}
     ]
   },
   mounted () {
@@ -21,15 +22,32 @@ new Vue({
         {
           task: this.newTask,
           isCompleted: false,
-          date: this.newDate
+          date: this.newDate,
+          id: ++this.uniqueKey
         }
       );
       this.newTask = '';
+    },
+    editTask: function (id) {
+      var newTitle = window.prompt("以下内容で更新します。");
+      if (newTitle === "") {
+        alert("入力欄が空欄です。");
+      } else if(newTitle !==null)
+      {this.edit(id,newTitle);}}, 
+    edit(id,task) {
+      var editIndex = '';
+      this.todos.some(function (value,index){
+        if(value.id===id){
+          editIndex = index;
+        }
+      });
+      this.todos[editIndex].task=task;
     },
     deleteTodo: function (todo) {
       var index = this.todos.indexOf(todo)
       this.todos.splice(index, 1)
     },
+  },
     clock() {
       var myDay = new Array("日", "月", "火", "水", "木", "金", "土");
       var now = new Date();
@@ -52,4 +70,4 @@ new Vue({
 
     }
   },
-});
+);
