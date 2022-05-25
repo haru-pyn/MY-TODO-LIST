@@ -25,7 +25,7 @@
         <input type="checkbox" v-model="todo.isCompleted" style="accent-color: #EF858C">
           <span :class="{ 'complete': todo.isCompleted }">{{ todo.id }}:{{ todo.task }}{{ todo.date }}</span>
         <button @click="editTask(todo.id)">edit</button>
-        <button @click="deleteTodo(todo.id)">Delete</button>
+        <button @click="deleteTodo(todo)">Delete</button>
       </li>
     </ul>
   </div>
