@@ -47,7 +47,6 @@ new Vue({
       var index = this.todos.indexOf(todo)
       this.todos.splice(index, 1)
     },
-  },
     clock() {
       var myDay = new Array("日", "月", "火", "水", "木", "金", "土");
       var now = new Date();
@@ -69,5 +68,6 @@ new Vue({
       document.getElementById('clock-02').innerHTML = clock2.toLocaleString(); // div id="clock-02"
 
     }
+  },
   },
 );
