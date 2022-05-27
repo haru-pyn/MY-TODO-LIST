@@ -20,16 +20,19 @@
       <button @click="addTodo()">Add</button>
     </p>
     <div class="mybox">
-    <ul>
-      <li v-for="todo in todos">
+      <draggable v-model="todos">
+       <li v-for="todo in todos" :key="todo.id">
         <input type="checkbox" v-model="todo.isCompleted" style="accent-color: #EF858C">
-          <span :class="{ 'complete': todo.isCompleted }">{{ todo.id }}:{{ todo.task }}{{ todo.date }}</span>
+        <span :class="{ 'complete': todo.isCompleted }">{{ todo.id }}:{{ todo.task }}{{ todo.date }}</span>
         <button @click="editTask(todo.id)">edit</button>
         <button @click="deleteTodo(todo)">Delete</button>
-      </li>
-    </ul>
+       </li>
+      </draggable>
   </div>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.23.2/vuedraggable.umd.min.js"></script>
 
   <!-- Vue.js -->
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>

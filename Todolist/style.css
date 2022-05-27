@@ -120,3 +120,8 @@ ul {
   #clock-02{
     font-size: 30px;
   }
+  li {
+    cursor: pointer;
+    padding: 10px;
+    border: solid #ddd 1px;
+  }

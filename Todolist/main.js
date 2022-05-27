@@ -1,5 +1,10 @@
+const draggable = window['vuedraggable'];
+console.log(draggable);
 new Vue({
   el: '#to-do',
+  components: {
+    'draggable': draggable,
+  },
   data: {
     newTask: '',
     newDate: '',
