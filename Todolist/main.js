@@ -9,11 +9,7 @@ new Vue({
     newTask: '',
     newDate: '',
     uniqueKey: 0,
-    todos: [
-      { task: 'Rubyの勉強をする', isCompleted: false, date: '2022-11-05' ,id:'1'},
-      { task: 'Vue.jsのアプリを作る', isCompleted: false, date: '2022-04-10',id:'2'},
-      { task: 'Youtubeをみる', isCompleted: false, date: '2022-09-14' ,id:'3'}
-    ]
+    todos: JSON.parse(localStorage.getItem('todos')) || []
   },
   mounted () {
     this.clock();
@@ -32,6 +28,7 @@ new Vue({
         }
       );
       this.newTask = '';
+      this.setTodos()
     },
     editTask: function (id) {
       var newTitle = window.prompt("以下内容で更新します。");
@@ -47,10 +44,15 @@ new Vue({
         }
       });
       this.todos[editIndex].task=task;
+      this.setTodos()
     },
     deleteTodo: function (todo) {
       var index = this.todos.indexOf(todo)
       this.todos.splice(index, 1)
+      this.setTodos()
+    },
+    setTodos() {
+      localStorage.setItem('todos', JSON.stringify(this.todos));
     },
     clock() {
       var myDay = new Array("日", "月", "火", "水", "木", "金", "土");
