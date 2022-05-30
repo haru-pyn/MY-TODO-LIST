@@ -14,7 +14,7 @@ ul {
     margin: 0 auto;
   }
   
-  ul > li > .complete {
+  li > .complete {
     text-decoration: line-through;
     color: #EAA8BF;
   }
@@ -123,5 +123,5 @@ ul {
   li {
     cursor: pointer;
     padding: 10px;
-    border: solid #ddd 1px;
+    border: solid #f3cbd0 1px;
   }
