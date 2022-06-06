@@ -1,5 +1,9 @@
 const draggable = window['vuedraggable'];
 console.log(draggable);
+
+const VModal = window["vue-js-modal"].default
+Vue.use(VModal);
+console.log(VModal);
 new Vue({
   el: '#to-do',
   components: {
@@ -30,12 +34,9 @@ new Vue({
       this.newTask = '';
       this.setTodos()
     },
-    editTask: function (id) {
-      var newTitle = window.prompt("以下内容で更新します。");
-      if (newTitle === "") {
-        alert("入力欄が空欄です。");
-      } else if(newTitle !==null)
-      {this.edit(id,newTitle);}}, 
+    editTask: function (todo) {
+      this.$modal.show("edit-modal-" + todo.id);
+    },
     edit(id,task) {
       var editIndex = '';
       this.todos.some(function (value,index){
@@ -44,7 +45,10 @@ new Vue({
         }
       });
       this.todos[editIndex].task=task;
+    },
+    hide : function (todo) {
       this.setTodos()
+      this.$modal.hide("edit-modal-" + todo.id);
     },
     deleteTodo: function (todo) {
       var index = this.todos.indexOf(todo)

@@ -125,3 +125,12 @@ ul {
     padding: 10px;
     border: solid #f3cbd0 1px;
   }
+  .modal-header, .modal-body {
+    padding: 5px 25px;
+  }
+  .modal-header {
+    border-bottom: 1px solid #f3cbd0;
+  }
+  .modal-foot {
+    text-align: right
+  }
