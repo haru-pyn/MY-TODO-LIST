@@ -1,9 +1,7 @@
 const draggable = window['vuedraggable'];
-console.log(draggable);
 
 const VModal = window["vue-js-modal"].default
 Vue.use(VModal);
-console.log(VModal);
 new Vue({
   el: '#to-do',
   components: {
@@ -19,8 +17,23 @@ new Vue({
     this.clock();
     // 1000ミリ秒ごとに処理を実効
     setInterval(() => { this.clock() }, 1000)
+    this.getUniqueKey()
   },
   methods: {
+    getUniqueKey: function () {
+      if(this.todos.length === 0) {
+        return
+      }
+    
+      let maxUniqueKey = 0
+      this.todos.forEach(function(todo) {
+        if (maxUniqueKey < todo.id) {
+          maxUniqueKey = todo.id
+        }
+      });
+
+      this.uniqueKey = maxUniqueKey
+    },
     addTodo: function () {
       if (this.newTask == '') return;
       this.todos.push(
