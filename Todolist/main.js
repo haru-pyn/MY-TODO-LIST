@@ -1,9 +1,7 @@
 const draggable = window['vuedraggable'];
-console.log(draggable);
 
 const VModal = window["vue-js-modal"].default
 Vue.use(VModal);
-console.log(VModal);
 new Vue({
   el: '#to-do',
   components: {
