@@ -22,7 +22,7 @@
     <div class="mybox">
       <draggable v-model="todos">
        <li v-for="todo in todos" :key="todo.id">
-         <input type="checkbox" v-model="todo.isCompleted" style="accent-color: #EF858C">
+         <input type="checkbox" v-model="todo.isCompleted" v-on:change="changeCheckbox" style="accent-color: #EF858C">
          <span :class="{ 'complete': todo.isCompleted }">{{ todo.id }}:{{ todo.task }}{{ todo.date }}</span>
          <button @click="editTask(todo)">edit</button>
 

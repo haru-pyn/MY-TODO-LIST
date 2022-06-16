@@ -47,6 +47,10 @@ new Vue({
       this.newTask = '';
       this.setTodos()
     },
+    changeCheckbox: function () {
+      this.isCompleted = true
+      this.setTodos()
+    },
     editTask: function (todo) {
       this.$modal.show("edit-modal-" + todo.id);
     },
