@@ -20,7 +20,7 @@
       <button @click="addTodo()">Add</button>
     </p>
     <div class="mybox">
-      <draggable v-model="todos">
+      <draggable v-model="todos" @end="onEnd">
        <li v-for="todo in todos" :key="todo.id">
          <input type="checkbox" v-model="todo.isCompleted" v-on:change="changeCheckbox" style="accent-color: #EF858C">
          <span :class="{ 'complete': todo.isCompleted }">{{ todo.id }}:{{ todo.task }}{{ todo.date }}</span>

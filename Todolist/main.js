@@ -51,6 +51,9 @@ new Vue({
       this.isCompleted = true
       this.setTodos()
     },
+    onEnd: function() {
+      this.setTodos()
+    },
     editTask: function (todo) {
       this.$modal.show("edit-modal-" + todo.id);
     },
