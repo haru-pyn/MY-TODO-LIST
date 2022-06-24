@@ -5,11 +5,13 @@
   <title>Vue.js TODO APP</title>
   <link rel="stylesheet" href="./style.css">
 </head>
+
 <header>
   <h1>
     <a>TODO LIST</a>
   </h1>
 </header>
+
 <body>
   <div style="text-align:center" id="clock-02"></div>
   <div id="to-do">
@@ -22,7 +24,12 @@
     <div class="mybox">
       <draggable v-model="todos" @end="onEnd">
        <li v-for="todo in todos" :key="todo.id">
-         <input type="checkbox" v-model="todo.isCompleted" v-on:change="changeCheckbox" style="accent-color: #EF858C">
+         <input
+            type="checkbox"
+            v-model="todo.isCompleted"
+            v-on:change="changeCheckbox(todo)"
+            style="accent-color: #EF858C"
+          >
          <span :class="{ 'complete': todo.isCompleted }">{{ todo.id }}:{{ todo.task }}{{ todo.date }}</span>
          <button @click="editTask(todo)">edit</button>
 
@@ -44,6 +51,36 @@
        </li>
       </draggable>
   </div>
+
+  <div class="endmybox">
+    <li v-for="todo in endTodos" :key="todo.id">
+      <input
+            type="checkbox"
+            v-model="todo.isCompleted"
+            v-on:change="changedCheckbox(todo)"
+            style="accent-color: #EF858C"
+          >
+          <span :class="{ 'complete': todo.isCompleted }">
+            {{ todo.id }}:{{ todo.task }}{{ todo.date }}
+          </span>
+      <button @click="editEndtask(todo)">edit</button>
+      <!-- edit-modal  -->
+      <modal :name="'edit-modal-' + todo.id">
+        <div class="modal-header">
+           <h2>以下内容で更新します。</h2>
+        </div>
+        <div class="modal-body">
+           <input type="text" v-model="todo.task">
+           <input type="date" v-model="todo.date">
+        </div>
+        <div class="modal-foot">
+           <button @click="hide2(todo)">閉じる</button>
+         </div>
+       </modal>
+      <button @click="deleteEndtodo(todo)">Delete</button>
+    </li>
+  </div>
+
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>

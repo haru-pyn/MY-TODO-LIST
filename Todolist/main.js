@@ -11,7 +11,8 @@ new Vue({
     newTask: '',
     newDate: '',
     uniqueKey: 0,
-    todos: JSON.parse(localStorage.getItem('todos')) || []
+    todos: JSON.parse(localStorage.getItem('todos')) || [],
+    endTodos: JSON.parse(localStorage.getItem('endTodos')) || [],
   },
   mounted () {
     this.clock();
@@ -21,13 +22,18 @@ new Vue({
   },
   methods: {
     getUniqueKey: function () {
-      if(this.todos.length === 0) {
+      if(this.todos.length === 0 && this.endTodos.length === 0) {
         return
       }
     
       let maxUniqueKey = 0
       this.todos.forEach(function(todo) {
         if (maxUniqueKey < todo.id) {
+          maxUniqueKey = todo.id
+        }
+      });
+      this.endTodos.forEach(function(todo){
+                if (maxUniqueKey < todo.id) {
           maxUniqueKey = todo.id
         }
       });
@@ -44,12 +50,27 @@ new Vue({
           id: ++this.uniqueKey
         }
       );
-      this.newTask = '';
+      this.initTask();
       this.setTodos()
     },
-    changeCheckbox: function () {
+    initTask : function () {
+      this.newTask = '';
+    },
+    changeCheckbox: function (todo) {
       this.isCompleted = true
-      this.setTodos()
+      if(this.isCompleted === true) {
+        this.endTodos.push(todo)
+        this.deleteTodo(todo)
+      }
+      this.setEndtodos()
+    },
+    changedCheckbox: function (todo){
+      this.isCompleted = false
+      if(this.isCompleted === false) {
+        this.todos.push(todo)
+        this.deleteEndtodo(todo)
+      }
+      this.setTodos(todo)
     },
     onEnd: function() {
       this.setTodos()
@@ -70,13 +91,37 @@ new Vue({
       this.setTodos()
       this.$modal.hide("edit-modal-" + todo.id);
     },
+    editEndtask: function(todo){
+      this.$modal.show("edit-modal-" + todo.id)
+    },
+    edit(id,task) {
+      var editIndex = '';
+      this.endTodos.some(function (value,index){
+        if(value.id===id){
+          editIndex = index;
+        }
+      });
+      this.endTodos[editIndex].task=task;
+    },
+    hide2 : function (todo) {
+      this.setEndtodos()
+      this.$modal.hide("edit-modal-" + todo.id);
+    },
     deleteTodo: function (todo) {
       var index = this.todos.indexOf(todo)
       this.todos.splice(index, 1)
       this.setTodos()
     },
+    deleteEndtodo: function(todo){
+      var index = this.endTodos.indexOf(todo)
+      this.endTodos.splice(index,1)
+      this.setEndtodos()
+    },
     setTodos() {
       localStorage.setItem('todos', JSON.stringify(this.todos));
+    },
+    setEndtodos(){
+      localStorage.setItem('endTodos', JSON.stringify(this.endTodos));
     },
     clock() {
       var myDay = new Array("日", "月", "火", "水", "木", "金", "土");
@@ -100,4 +145,4 @@ new Vue({
 
     }
   },
-});
+})
