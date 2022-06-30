@@ -123,9 +123,13 @@ new Vue({
       this.setEndtodos()
       this.$modal.hide("edit-modal-" + todo.id);
     },
-    allDeleteTodo: function () {
+    allDeleteTodos: function () {
       this.todos = [];
       this.setTodos()
+    },
+    allDeleteEndtodos: function(){
+      this.endTodos = [];
+      this.setEndtodos()
     },
     deleteTodo: function (todo) {
       var index = this.todos.indexOf(todo)
