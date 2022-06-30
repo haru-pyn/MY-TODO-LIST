@@ -13,6 +13,7 @@ new Vue({
     uniqueKey: 0,
     todos: JSON.parse(localStorage.getItem('todos')) || [],
     endTodos: JSON.parse(localStorage.getItem('endTodos')) || [],
+    checkedAll: false
   },
   mounted () {
     this.clock();
@@ -72,6 +73,21 @@ new Vue({
       }
       this.setTodos(todo)
     },
+    allChecked: function(){
+      this.checkedAll = true
+      this.todos.forEach(function(todo){
+        if(todo.isCompleted === false){
+          todo.isCompleted = true 
+          this.endTodos.push(todo)
+        }
+      }, this)
+      this.allDeleteTodo();
+      this.setEndtodos()
+    },
+    allDelete: function(){
+      localStorage.clear();
+      location.reload();
+    },
     onEnd: function() {
       this.setTodos()
     },
@@ -106,6 +122,10 @@ new Vue({
     hide2 : function (todo) {
       this.setEndtodos()
       this.$modal.hide("edit-modal-" + todo.id);
+    },
+    allDeleteTodo: function () {
+      this.todos = [];
+      this.setTodos()
     },
     deleteTodo: function (todo) {
       var index = this.todos.indexOf(todo)
