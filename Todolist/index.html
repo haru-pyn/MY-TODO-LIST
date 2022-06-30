@@ -22,6 +22,11 @@
       <button @click="addTodo()">Add</button>
     </p>
     <div class="mybox">
+      <button
+      v-model="checkedAll"
+      @click="allChecked()"
+      style="accent-color: #EF858C"
+    >checkAll</button>
       <draggable v-model="todos" @end="onEnd">
        <li v-for="todo in todos" :key="todo.id">
          <input
@@ -80,6 +85,7 @@
       <button @click="deleteEndtodo(todo)">Delete</button>
     </li>
   </div>
+  <button @click="allDelete">allDelete</button>
 
   </div>
 
