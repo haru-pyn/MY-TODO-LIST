@@ -48,7 +48,7 @@
             <input type="date" v-model="todo.date">
          </div>
          <div class="modal-foot">
-            <button @click="hide(todo)">閉じる</button>
+            <button @click="hideTodos(todo)">閉じる</button>
           </div>
         </modal>
 
@@ -79,7 +79,7 @@
            <input type="date" v-model="todo.date">
         </div>
         <div class="modal-foot">
-           <button @click="hide2(todo)">閉じる</button>
+           <button @click="hideEndtodos(todo)">閉じる</button>
          </div>
        </modal>
       <button @click="deleteEndtodo(todo)">Delete</button>

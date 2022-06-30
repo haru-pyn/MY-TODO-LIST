@@ -103,7 +103,7 @@ new Vue({
       });
       this.todos[editIndex].task=task;
     },
-    hide : function (todo) {
+    hideTodos : function (todo) {
       this.setTodos()
       this.$modal.hide("edit-modal-" + todo.id);
     },
@@ -119,7 +119,7 @@ new Vue({
       });
       this.endTodos[editIndex].task=task;
     },
-    hide2 : function (todo) {
+    hideEndtodos : function (todo) {
       this.setEndtodos()
       this.$modal.hide("edit-modal-" + todo.id);
     },
