@@ -70,6 +70,7 @@
             {{ todo.id }}:{{ todo.task }}{{ todo.date }}
           </span>
       <button @click="editEndtask(todo)">edit</button>
+      
       <!-- edit-modal  -->
       <modal :name="'edit-modal-' + todo.id">
         <div class="modal-header">
