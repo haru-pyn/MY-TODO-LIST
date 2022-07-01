@@ -73,6 +73,7 @@ new Vue({
       }
       this.setTodos(todo)
     },
+    
     allChecked: function(){
       this.checkedAll = true
       this.todos.forEach(function(todo){
