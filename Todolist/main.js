@@ -82,7 +82,7 @@ new Vue({
           this.endTodos.push(todo)
         }
       }, this)
-      this.allDeleteTodo();
+      this.allDeleteTodos();
       this.setEndtodos()
     },
     allDelete: function(){
